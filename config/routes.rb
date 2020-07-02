@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resource :session
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'session#destroy' 
 
   resources :employees
   resources :companies
-  resources :users
+  #resources :users
   
 end
