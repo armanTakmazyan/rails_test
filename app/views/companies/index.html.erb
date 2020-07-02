@@ -1,7 +1,80 @@
-<% @companies.each do |company| %> 
+   <div class="container">
 
-    <h1>company.name</h1>
+    <div class="row">
 
-<% end %>    
+        <div class="col-md-offset-2 col-md-8">
+            <% if flash[:success] %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>New Company Was Added:</strong>
+                    <%= flash[:success] %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% end %>
+            <h2>Companies</h2>
+            <%= link_to "Add New Company", new_company_path, class: "btn btn-info", role: "button" %>
+            <hr>
+            <div class="card">
+
+                <div class="card-body">
+                    <% if @companies.size == 0 %>
+                        <p>There is no companies yet...</p>
+                    <% end %>
+
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Website</th>
+                            <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <% @companies.each do |company| %> 
+
+                                <tr>
+                                    <th scope="row"><%= company.id %></th>
+                                    <td><%= company.name %></td>
+                                    <td><%= company.email %></td>
+                                    <td><%= company.website %></td>
+                                    <td>
+                                        <%= link_to "Show", company_path(@company.id), class: "btn btn-sm btn-success", role: "button" %>
+                                        <%= link_to "Edit", edit_company_path(@company.id), class: "btn btn-sm btn-primary", role: "button" %>
+                                        <a href="#" data-company-id="<%= company.id %>" data-company-title="<%= company.name %>" data-toggle="modal" data-target="#delete_modal" role="button" class="btn btn-sm btn-danger">Delete</a>
+
+                                    </td>
+                                </tr>
+                            
+                            <% end %> 
+
+                        </tbody>
+                    
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    window.addEventListener('load', function() {
+    console.log('All assets are loaded');
+    $('#delete_modal').on('show.bs.modal', function(e) {
+        let data = $(e.relatedTarget).data();
+        let actionRoute = "/companies/"+data.companyId;
+        $(this).find('.modal-title').text(`Confirm to deleting the ${data.companyTitle} company`);
+        $('#delete_form').attr('action', actionRoute);
+    });
+    })
+</script>
+
 
 

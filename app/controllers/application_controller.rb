@@ -4,10 +4,10 @@ private
   
   def must_be_not_authenticated
     unless session[:user_id].nil?
-        redirect_to employees_path
+        redirect_to companies_path
     end
   end
-  
+
   def require_signin
     unless current_user
       session[:intended_url] = request.url
