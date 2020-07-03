@@ -1,0 +1,38 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-offset-md-2 col-md-5">
+            <% if flash[:notice] %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>New Employee Was Added:</strong>
+                        <%= flash[:notice] %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% end %>
+        <form id="add_company_form">
+            <%= render "shared/errors", object: @employee %>
+            <div class="form-group">
+                <label for="input_first_name">Firt Name</label>
+                <input readonly type="text" class="form-control" id="input_first_name" value="<%= @employee.first_name %>">
+            </div>
+            <div class="form-group">
+                <label for="input_last_name">Last Name</label>
+                <input readonly type="text" class="form-control" id="input_last_name" value="<%= @employee.last_name %>">
+            </div>
+            <div class="form-group">
+                <label for="input_email">Email</label>
+                <input readonly type="text" class="form-control" id="input_email" value="<%=@employee.email%>">
+            </div>
+            <div class="form-group">
+                <label for="input_phone">Phone</label>
+                <input readonly type="text" class="form-control" id="input_phone" value="<%=@employee.phone%>">
+            </div>
+
+            <hr>
+            <%= link_to "Back To Employees", employees_path, class: 'btn btn-secondary' %>
+        </form>
+        </div>    
+    </div>
+</div>
