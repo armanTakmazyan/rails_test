@@ -1,0 +1,37 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-offset-md-2 col-md-5">
+            <% if flash[:notice] %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>New Company Was Added:</strong>
+                        <%= flash[:notice] %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <% end %>
+        <form id="add_company_form">
+            <%= render "shared/errors", object: @company %>
+            <div class="form-group">
+                <label for="input_name">Name</label>
+                <input readonly type="text" class="form-control" id="input_name" value="<%= @company.name %>">
+            </div>
+            <div class="form-group">
+                <label for="input_email">Email</label>
+                <input readonly type="text" class="form-control" id="input_email" value="<%=@company.email%>">
+            </div>
+            <div class="form-group">
+                <label for="input_website">Website</label>
+                <input readonly type="text" class="form-control" id="input_website" value="<%=@company.website%>">
+            </div>
+            <div class="image_wrapper">
+                <p>Logo:</p>
+                <img style="object-fit: cover; width: 100px; height: 100px;" class="card-img-top img-responsive" src="<%= @company.logo_url.nil? ? 'https://bavariancarcare.com/wp-content/uploads/2019/12/image-placeholder-1200x800-1.jpg' : @company.logo_url%>" alt="logo">
+            </div>
+            <hr>
+            <%= link_to "Back To Companies", companies_path, class: 'btn btn-secondary' %>
+        </form>
+        </div>    
+    </div>
+</div>

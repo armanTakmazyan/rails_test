@@ -1,0 +1,17 @@
+<% if object.errors.any? %>
+    <h2>
+        Oops! Your form could not be saved.
+    </h2>
+    <h3>
+        Please correct the following 
+        <%= pluralize(object.errors.size, "error") %>:
+    </h3>
+    <% object.errors.full_messages.each do |message| %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong><%= message %></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <% end %>
+<% end %>

@@ -1,3 +1,7 @@
 class Company < ApplicationRecord
     has_many :employee, dependent: :destroy 
-end
+
+    mount_uploader :logo, LogoUploader
+
+    
+end  

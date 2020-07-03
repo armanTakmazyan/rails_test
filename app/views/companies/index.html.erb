@@ -1,12 +1,44 @@
-   <div class="container">
+<!-- Modal -->
+<div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">...</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You will delete all information about this Company, including Employee data.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="" id="delete_form" method="POST">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input name="_method" type="hidden" value="delete" />
+            <button type="submit" id="delete-btn" class="btn btn-danger">Delete anyway!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
 
     <div class="row">
 
         <div class="col-md-offset-2 col-md-8">
-            <% if flash[:success] %>
+            <% if flash[:notice] %>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>New Company Was Added:</strong>
-                    <%= flash[:success] %>
+                    <%= flash[:notice] %>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -42,8 +74,8 @@
                                     <td><%= company.email %></td>
                                     <td><%= company.website %></td>
                                     <td>
-                                        <%= link_to "Show", company_path(@company.id), class: "btn btn-sm btn-success", role: "button" %>
-                                        <%= link_to "Edit", edit_company_path(@company.id), class: "btn btn-sm btn-primary", role: "button" %>
+                                        <%= link_to "Show", company_path(company.id), class: "btn btn-sm btn-success", role: "button" %>
+                                        <%= link_to "Edit", edit_company_path(company.id), class: "btn btn-sm btn-primary", role: "button" %>
                                         <a href="#" data-company-id="<%= company.id %>" data-company-title="<%= company.name %>" data-toggle="modal" data-target="#delete_modal" role="button" class="btn btn-sm btn-danger">Delete</a>
 
                                     </td>
