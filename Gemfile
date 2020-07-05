@@ -54,8 +54,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-#This gem provides a simple and extremely flexible way to upload files from Ruby applications.
+# This gem provides a simple and extremely flexible way to upload files from Ruby applications.
 gem 'carrierwave', '~> 0.9'
 
-#Phonelib is a gem allowing you to validate phone number.
+# Phonelib is a gem allowing you to validate phone number.
 gem 'phonelib'
+
+
+# Will_paginate is a pagination library that integrates with Ruby on Rails
+gem 'will_paginate', '~> 3.3.0'

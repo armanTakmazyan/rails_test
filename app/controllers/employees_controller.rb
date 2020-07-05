@@ -4,7 +4,7 @@ class EmployeesController < ApplicationController
     around_action :catch_not_found
 
     def index
-        @employees = Employee.all.order('created_at DESC')
+        @employees = Employee.paginate(page: params[:page], per_page: 1).order('created_at DESC')
     end
 
 

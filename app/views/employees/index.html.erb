@@ -89,6 +89,12 @@
                         </tbody>
                     
                     </table>
+                    <div class="digg_pagination">
+                        <div class="page_info">
+                            <%= page_entries_info @employees %>
+                        </div>
+                        <%= will_paginate @employees, :container => false %>
+                    </div>
                 </div>
 
             </div>

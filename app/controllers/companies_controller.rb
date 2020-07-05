@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
     around_action :catch_not_found
 
     def index
-        @companies = Company.all.order('created_at DESC')
+        @companies = Company.paginate(page: params[:page], per_page: 1).order('created_at DESC')
     end
 
     def new
