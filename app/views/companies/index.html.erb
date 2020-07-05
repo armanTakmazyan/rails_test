@@ -95,13 +95,13 @@
 </div>
 
 <script>
-    document.addEventListener("turbolinks:load", () => {
-        $('#delete_modal').off('show.bs.modal').on('show.bs.modal', function(e) {
-            let data = $(e.relatedTarget).data();
-            let actionRoute = "/companies/"+data.companyId;
-            $(this).find('#deleteModalLabel').text(`Confirm to deleting the "${data.companyTitle}" company`);
-            $('#delete_form').attr('action', actionRoute);
-        });
+    
+    $('#delete_modal').on('show.bs.modal', function(e) {
+        let data = $(e.relatedTarget).data();
+        let actionRoute = "/companies/"+data.companyId;
+        $(this).find('#deleteModalLabel').text(`Confirm to deleting the "${data.companyTitle}" company`);
+        $('#delete_form').attr('action', actionRoute);
+            
     });
 </script>
 
