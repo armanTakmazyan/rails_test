@@ -53,4 +53,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
+#This gem provides a simple and extremely flexible way to upload files from Ruby applications.
 gem 'carrierwave', '~> 0.9'
+
+#Phonelib is a gem allowing you to validate phone number.
+gem 'phonelib'

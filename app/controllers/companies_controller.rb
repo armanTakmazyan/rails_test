@@ -39,8 +39,11 @@ class CompaniesController < ApplicationController
     end
 
     def destroy
-        name = Company.find(params[:id]).name 
-        Company.find(params[:id]).destroy
+        current_company = Company.find(params[:id])
+        name = current_company.name 
+        id = current_company.id
+        current_company.destroy
+        FileUtils.remove_dir("#{Rails.root}/public/uploads/company/logo/#{id}", :force => true)
         redirect_to companies_path, notice: "#{name} deleted." 
     end
 
