@@ -9,14 +9,15 @@ class EmployeesController < ApplicationController
 
     def new
         @employee = Employee.new
+        @companies = Company.all.order('created_at DESC')
     end
 
 
     def create
         @employee = Employee.new(resume_params)
-        
+        @companies = Company.all.order('created_at DESC')
         if @employee.save
-            flash.notice = "The company #{@employee.name} has been uploaded."
+            flash.notice = "New Employee was added to the #{@employee.company.name} company: #{@employee.first_name}"
             redirect_to employees_path
         else
             render :new  
@@ -29,6 +30,7 @@ class EmployeesController < ApplicationController
 
    def edit
         @employee = Employee.find(params[:id]) 
+        @companies = Company.all.order('created_at DESC')
    end
 
 
@@ -42,7 +44,7 @@ class EmployeesController < ApplicationController
     end
 
     def destroy
-        name = Employee.find(params[:id]).name 
+        name = Employee.find(params[:id]).first_name 
         Employee.find(params[:id]).destroy
         redirect_to employees_path, notice: "#{name} deleted." 
     end
@@ -50,7 +52,7 @@ class EmployeesController < ApplicationController
 private 
     
     def resume_params
-        params.require(:employee).permit(:first_name, :last_name, :email, :phone, :company)
+        params.require(:employee).permit(:first_name, :last_name, :email, :phone, :company_id)
     end    
 
 end

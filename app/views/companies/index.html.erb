@@ -37,8 +37,7 @@
         <div class="col-md-offset-2 col-md-8">
             <% if flash[:notice] %>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>New Company Was Added:</strong>
-                    <%= flash[:notice] %>
+                    <strong><%= flash[:notice] %></strong>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,7 +101,7 @@
     $('#delete_modal').on('show.bs.modal', function(e) {
         let data = $(e.relatedTarget).data();
         let actionRoute = "/companies/"+data.companyId;
-        $(this).find('.modal-title').text(`Confirm to deleting the ${data.companyTitle} company`);
+        $(this).find('#deleteModalLabel').text(`Confirm to deleting the "${data.companyTitle}" company`);
         $('#delete_form').attr('action', actionRoute);
     });
     })
