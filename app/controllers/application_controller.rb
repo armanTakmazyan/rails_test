@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  # Also by default a production application will render either a 404 or a 500 error message.
   before_action :set_no_cache
 
   def index
