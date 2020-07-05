@@ -4,7 +4,7 @@ Necessary commands to start the project:
 ```sh
 $ yarn install
 ```
-If you already have bundle, skip this point: 
+If you already have the bundler, skip this point: 
 ```sh
 $ gem install bundler
 ```
