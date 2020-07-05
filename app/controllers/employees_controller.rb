@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
     before_action :require_signin
     before_action :require_admin
+    around_action :catch_not_found
 
     def index
         @employees = Employee.all.order('created_at DESC')
@@ -53,6 +54,12 @@ private
     
     def resume_params
         params.require(:employee).permit(:first_name, :last_name, :email, :phone, :company_id)
-    end    
+    end
+    
+    def catch_not_found
+        yield
+        rescue ActiveRecord::RecordNotFound
+            redirect_to root_path, :flash => { :error => "Record not found." }
+    end
 
 end

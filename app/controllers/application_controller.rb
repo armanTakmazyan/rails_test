@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
 
   before_action :set_no_cache
 
+  def index
+    
+  end
+
+protected  
   def set_no_cache
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
     response.headers["Pragma"] = "no-cache"
@@ -15,6 +20,12 @@ private
         redirect_to companies_path
     end
   end
+
+  def is_authenticated?
+    session[:user_id].present?
+  end
+
+  helper_method :is_authenticated?
 
   def require_signin
     unless current_user
