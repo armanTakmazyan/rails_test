@@ -12,10 +12,10 @@ Then:
 ```sh
 $ gem update bundler
 $ bundle install
-$ Rails db:create
-$ Rails db:migrate
-$ Rails db:seed
-$ Rails server
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+$ rails server
 ```
 
 License
