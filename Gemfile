@@ -55,7 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 # This gem provides a simple and extremely flexible way to upload files from Ruby applications.
-gem 'carrierwave', '~> 0.9'
+gem 'carrierwave', '~> 1.3'
 
 # Phonelib is a gem allowing you to validate phone number.
 gem 'phonelib'
